@@ -7,6 +7,7 @@ import {
 import type { IAccount, IUserInfo } from "@/service/login/types"
 import localCache from "@/utils/cache"
 import router from "@/router"
+import { mapMenusToRoutes } from "@/utils/map-menus"
 
 export function setupUserStore() {
   userStore().loadLocalLogin()
@@ -19,7 +20,7 @@ export const userStore = defineStore("user", {
     return {
       token: "",
       userInfo: userInfo,
-      userMenus: {},
+      userMenus: {} as any,
     }
   },
   getters: {},
@@ -41,6 +42,14 @@ export const userStore = defineStore("user", {
       const userMenuResult = await requestUserMenuByRoleID(userInfo.role.id)
       const userMenus = userMenuResult.data
       this.userMenus = userMenus
+      localCache.setCache("userMenus", userMenus)
+
+      // 动态注册路由
+      const routes = mapMenusToRoutes(userMenus)
+      for (const route of routes) {
+        router.addRoute("main", route)
+      }
+      console.log("路由加载完成")
 
       // 去首页
       router.push("/main")
