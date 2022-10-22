@@ -1,6 +1,6 @@
 <template>
   <div>{{ title }}</div>
-  <div>{{ store.msg }}</div>
+  <div>{{ store.userInfo.name }}</div>
 </template>
 
 <script setup lang="ts">

@@ -1,11 +1,12 @@
 import Requester from "./requester"
+import localCache from "@/utils/cache"
 
 const requester = new Requester({
   baseURL: import.meta.env.VITE_REQUESTER_BASE_URL,
   timeout: Number(import.meta.env.VITE_REQUESTER_TIMEOUT),
   interceptors: {
     requestInterceptor(config) {
-      const token = ""
+      const token = localCache.getCache("token") ?? ""
 
       if (!config.headers) {
         config.headers = {}

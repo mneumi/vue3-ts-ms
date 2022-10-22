@@ -1,9 +1,14 @@
 <template>
-  <div>App</div>
-  <router-view></router-view>
-  <el-button type="primary">哈哈哈</el-button>
+  <div class="app">
+    <router-view />
+  </div>
 </template>
 
 <script setup lang="ts"></script>
 
-<style lang="scss" scoped></style>
+<style lang="less" scoped>
+.app {
+  width: 100%;
+  height: 100%;
+}
+</style>

@@ -76,7 +76,7 @@ class Requester {
       }
 
       this.instance
-        .request<any, T>(config)
+        .request<T, T>(config)
         .then((res) => {
           if (config.interceptors?.responseInterceptor) {
             res = config.interceptors.responseInterceptor(res)
