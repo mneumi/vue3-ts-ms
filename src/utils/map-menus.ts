@@ -17,15 +17,17 @@ export function mapMenusToRoutes(userMenus: any): RouteRecordRaw[] {
 
   // 根据菜单过滤 routes
   const _recurseGetRoute = (menus: any[]) => {
-    for (const menu of menus) {
-      if (menu.type === 2) {
-        const route = allRoutes.find((route) => route.path === menu.url)
-        if (route) {
-          routes.push(route)
-        }
-      } else {
-        if (menu.children) {
-          _recurseGetRoute(menu.children)
+    if (menus) {
+      for (const menu of menus) {
+        if (menu.type === 2) {
+          const route = allRoutes.find((route) => route.path === menu.url)
+          if (route) {
+            routes.push(route)
+          }
+        } else {
+          if (menu.children) {
+            _recurseGetRoute(menu.children)
+          }
         }
       }
     }

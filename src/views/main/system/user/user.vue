@@ -1,18 +1,12 @@
 <template>
   <div class="user">
-    <h2>user</h2>
+    <m-form v-bind="formConfig" />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue"
-
-export default defineComponent({
-  name: "user",
-  setup() {
-    return {}
-  },
-})
+<script setup lang="ts">
+import MForm from "@/base-ui/form"
+import { formConfig } from "./config/search"
 </script>
 
-<style scoped></style>
+<style lang="less" scoped></style>

@@ -73,6 +73,13 @@ export const userStore = defineStore("user", {
       if (userMenus) {
         this.userMenus = userMenus
       }
+
+      // 动态注册路由
+      const routes = mapMenusToRoutes(userMenus)
+      for (const route of routes) {
+        router.addRoute("main", route)
+      }
+      console.log("路由加载完成")
     },
   },
 })
