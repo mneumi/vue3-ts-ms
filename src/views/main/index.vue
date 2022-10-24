@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineExpose } from "vue"
+import { ref } from "vue"
 import NavMenu from "@/components/nav-menu"
 import NavHeader from "@/components/nav-header"
 

@@ -3,8 +3,8 @@ import { setupUserStore } from "./user"
 
 const pinia = createPinia()
 
-export function loadLocalStorage() {
+export default pinia
+
+export function setupStore() {
   setupUserStore()
 }
-
-export default pinia

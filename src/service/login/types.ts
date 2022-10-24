@@ -39,8 +39,3 @@ export type IUserInfo = {
   role: IRole
   department: IDepartment
 }
-
-export type IDataType<T = any> = {
-  code: number
-  data: T
-}

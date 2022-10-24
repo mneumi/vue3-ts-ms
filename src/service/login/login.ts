@@ -1,5 +1,6 @@
 import Requester from ".."
-import type { IAccount, IDataType, ILoginResult, IUserInfo } from "./types"
+import type { IAccount, ILoginResult, IUserInfo } from "./types"
+import type { IDataType } from "../types"
 
 enum LoginAPI {
   AccountLogin = "/login",

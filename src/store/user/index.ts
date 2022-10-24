@@ -44,13 +44,6 @@ export const userStore = defineStore("user", {
       this.userMenus = userMenus
       localCache.setCache("userMenus", userMenus)
 
-      // 动态注册路由
-      const routes = mapMenusToRoutes(userMenus)
-      for (const route of routes) {
-        router.addRoute("main", route)
-      }
-      console.log("路由加载完成")
-
       // 去首页
       router.push("/main")
     },
@@ -79,7 +72,6 @@ export const userStore = defineStore("user", {
       for (const route of routes) {
         router.addRoute("main", route)
       }
-      console.log("路由加载完成")
     },
   },
 })

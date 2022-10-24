@@ -5,7 +5,7 @@
       <span class="title">mneumi</span>
     </div>
     <el-menu
-      default-active="2"
+      :default-active="defaultValue"
       class="el-menu-vertical"
       background-color="#0c2135"
       text-color="#b7bbc3"
@@ -42,11 +42,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue"
+import { defineProps, ref } from "vue"
 import { userStore as useUserStore } from "@/store/user"
 import { storeToRefs } from "pinia"
 import Icon from "./icon.vue"
-import { useRouter } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
+import { pathMapToMneu } from "@/utils/map-menus"
 
 const { userMenus } = storeToRefs(useUserStore())
 
@@ -55,6 +56,12 @@ const props = defineProps<{
 }>()
 
 const router = useRouter()
+const route = useRoute()
+const currentPath = route.path
+
+const menu = pathMapToMneu(userMenus.value, currentPath)
+
+const defaultValue = ref<string>(menu.id + "")
 
 const handleMenuItemClick = (item: any) => {
   router.push(item.url)
